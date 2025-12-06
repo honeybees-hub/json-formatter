@@ -11,18 +11,18 @@
     
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --secondary-color: #64748b;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --error-bg: #fee2e2;
-            --error-text: #b91c1c;
-            --success-bg: #dcfce7;
-            --success-text: #15803d;
+            --primary-color: #5a7dff;
+            --primary-hover: #4a6ceb;
+            --secondary-color: #8c9eff;
+            --bg-color: #1c1c28;
+            --card-bg: #2a2a3a;
+            --text-main: #e0e0e0;
+            --text-muted: #b0b0b0;
+            --border-color: #404055;
+            --error-bg: #fed7d7;
+            --error-text: #e53e3e;
+            --success-bg: #c6f6d5;
+            --success-text: #38a169;
             --font-main: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -41,6 +41,35 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+        }
+
+        /* Dark Theme */
+        body.dark-theme {
+            --bg-color: #1c1c28;
+            --card-bg: #2a2a3a;
+            --text-main: #c0c0c0;
+            --text-muted: #b0b0b0;
+            --border-color: #404055;
+            --error-bg: #fed7d7;
+            --error-text: #e53e3e;
+            --success-bg: #c6f6d5;
+            --success-text: #38a169;
+        }
+
+        body.dark-theme .panel-header {
+            background: #2a2a3a;
+        }
+
+        body.dark-theme textarea:focus {
+            background-color: #3b3b4d;
+        }
+
+        body.dark-theme textarea.stale {
+            background-color: #1c1c28;
+        }
+
+        body.dark-theme .panel-footer {
+            background: #2a2a3a;
         }
 
         /* --- Layout & Container --- */
@@ -594,6 +623,9 @@
         btnFormat.addEventListener('click', () => processJSON(false));
         btnMinify.addEventListener('click', () => processJSON(true));
         btnCopy.addEventListener('click', copyOutput);
+        
+        // COMMENTED OUT to prevent runtime error (Button not found in HTML)
+        // btnThemeToggle.addEventListener('click', toggleTheme);
 
         // Clear Buttons
         btnClearIn.addEventListener('click', () => {
@@ -610,6 +642,7 @@
         });
 
         // Initialize
+        document.body.classList.add('dark-theme'); // Force dark theme
         updateStats();
 
     </script>
